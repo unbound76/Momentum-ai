@@ -79,14 +79,14 @@ function advice(q){
 }
 function routine(){
  const saved=data.dailyRoutine||null;
- return head('Daily routine','Build a realistic plan for today, then send its steps to your To-do list.')+
+ return head('Daily routine','Create a routine that stays saved here until you change it.')+
  '<section class="card"><h2>Set up your day</h2>'+
  '<label class="label">Main focus</label><select class="field" id="routineFocus"><option value="balanced">Balanced day</option><option value="school">School and homework</option><option value="energy">Healthy habits and energy</option></select>'+
  '<label class="label">What do you need to make time for? (optional)</label><input class="field" id="routinePriority" placeholder="e.g. math homework, practice, clean room">'+
  '<label class="label">How much free time do you have?</label><select class="field" id="routineTime"><option value="light">A little — keep it short</option><option value="medium" selected>Some time — balanced</option><option value="open">A flexible day</option></select>'+
  '<br><button class="btn" id="makeRoutine" style="width:100%">✦ Build my daily routine</button>'+
  '<p class="muted" style="font-size:10px;margin-top:12px">Your routine is generated on this device. It is a flexible suggestion, not a strict schedule.</p></section>'+
- '<section class="card" id="routineResult" style="margin-top:15px">'+(saved?'<h2>Your routine</h2><div class="coach">'+safe(saved.text).replace(/\n/g,'<br>')+'</div><p class="muted" style="font-size:11px">Generated '+safe(saved.date||'')+'. Its steps were added to your To-do list.</p>':'<h2>Your routine will appear here</h2><p class="muted">Choose your focus and generate a routine.</p>')+'</section>';
+ '<section class="card" id="routineResult" style="margin-top:15px">'+(saved?'<h2>Your routine</h2><div class="coach">'+safe(saved.text).replace(/\n/g,'<br>')+'</div><p class="muted" style="font-size:11px">Saved '+safe(saved.date||'')+'. This routine stays here until you replace it.</p>':'<h2>Your routine will appear here</h2><p class="muted">Choose your focus and generate a routine.</p>')+'</section>';
 }
 function makeDailyRoutine(){
  const focus=document.getElementById('routineFocus').value;
@@ -100,7 +100,7 @@ function makeDailyRoutine(){
  if(time==='open')steps.push('Tidy or prepare one small thing for tomorrow','Wind down and get ready for bed');
  else if(time==='medium')steps.push('Prepare what you need for tomorrow','Wind down before bed');
  else steps.push('Choose one small thing to prepare for tomorrow');
- const text='YOUR ROUTINE FOR TODAY\n\nMorning\n• Get ready and have breakfast\n• '+steps[0]+'\n\nDaytime\n'+steps.slice(1,Math.max(2,steps.length-1)).map(x=>'• '+x).join('\n')+'\n\nEvening\n• '+steps[steps.length-1]+'\n\nKeep this flexible. Move steps around or skip what does not fit your day.';
+ const text='MY SAVED ROUTINE\n\nMorning\n• Get ready and have breakfast\n• '+steps[0]+'\n\nDaytime\n'+steps.slice(1,Math.max(2,steps.length-1)).map(x=>'• '+x).join('\n')+'\n\nEvening\n• '+steps[steps.length-1]+'\n\nThis routine is saved in Momentum. You can come back to it whenever you need it.';
  const today=new Date().toLocaleDateString();
  data.dailyRoutine={text,steps,date:today,dayKey:new Date().toLocaleDateString('en-CA')};
  data.todos=data.todos||[];
