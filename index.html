@@ -6,7 +6,8 @@
 </style></head><body><div class="app"><header class="top"><div class="brand"><div class="logo">M</div>MOMENTUM</div><div style="display:flex;gap:8px;align-items:center"><span class="pill" id="saveState">✓ Saved on device</span><span class="pill" id="streak">🔥 0 day streak</span></div></header><nav class="tabs" id="tabs"></nav><main id="main"></main></div><nav class="bottom" id="bottom"></nav><div class="toast" id="toast"></div>
 <script>
 const KEY='momentum_pages_v1',defaults={todos:[],xp:0,level:1,streak:0,tasks:[{id:1,title:'Plan your day',detail:'Set your priorities',xp:20,done:false},{id:2,title:'Move your body',detail:'Choose movement you enjoy',xp:30,done:false},{id:3,title:'Practice a skill',detail:'Spend 15 minutes learning',xp:25,done:false},{id:4,title:'Evening reflection',detail:'Write down one win',xp:20,done:false}],workouts:[],focusSessions:0,focusMinutes:25,coachNotes:[]};
-let breathTimer=null,breathRemaining=120,breathElapsed=0;\nlet data;try{data={...defaults,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{data={...defaults}}let page='plan',timer=null,seconds=data.focusMinutes*60;
+let breathTimer=null,breathRemaining=120,breathElapsed=0;
+let data;try{data={...defaults,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{data={...defaults}}let page='plan',timer=null,seconds=data.focusMinutes*60;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(data));let e=document.getElementById('saveState');if(e)e.textContent='✓ Saved on device'}catch{let e=document.getElementById('saveState');if(e)e.textContent='Save unavailable'}}
 function notify(s){let e=document.getElementById('toast');e.textContent=s;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1700)}
 function xp(n){data.xp+=n;while(data.xp>=data.level*100){data.xp-=data.level*100;data.level++;notify('Level up! Level '+data.level)}}
