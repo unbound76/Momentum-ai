@@ -3,17 +3,7 @@
 <style>
 :root{--bg:#090b10;--panel:#151b26;--line:#293241;--text:#f3f5f8;--muted:#929bad;--accent:#b7f36b}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#1b2630,var(--bg) 55%);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer;color:inherit;border:0}.app{max-width:1100px;margin:auto;padding:20px 18px 95px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:-.5px}.logo{width:36px;height:36px;border-radius:12px;background:var(--accent);color:#10150b;display:grid;place-items:center;font-weight:950}.pill{background:#1c2430;border:1px solid var(--line);padding:7px 10px;border-radius:99px;color:var(--muted);font-size:11px}.tabs{display:flex;gap:6px;background:#111620;border:1px solid var(--line);padding:5px;border-radius:13px;width:max-content;margin-bottom:25px}.tab{background:none;color:var(--muted);padding:9px 16px;border-radius:9px;font-size:13px}.tab.active{background:#252e3a;color:white}.grid{display:grid;grid-template-columns:1.4fr 1fr;gap:15px;margin-top:20px}.card{background:linear-gradient(145deg,#151b26,#111620);border:1px solid var(--line);border-radius:18px;padding:19px;min-width:0}h1{font-size:30px;letter-spacing:-1px;margin:0 0 5px}h2{font-size:17px;margin:0 0 13px}h3{font-size:14px;margin:0 0 5px}.muted,.sub{color:var(--muted)}.sub{margin:0}.date{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px}.head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:18px}.hero{display:flex;justify-content:space-between;align-items:center;gap:15px}.ring{width:98px;height:98px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) var(--p),#29313e 0);position:relative;flex:none}.ring:before{content:"";position:absolute;inset:8px;border-radius:50%;background:#141a24}.ring b{position:relative;font-size:22px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:15px}.stat{background:#1a212d;border-radius:12px;padding:12px}.stat b{display:block;font-size:20px}.stat small{color:var(--muted);font-size:10px}.task{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid #252d39}.task:last-child{border:0}.check{width:23px;height:23px;border:1px solid #526071;border-radius:8px;background:#171e29;flex:none}.check.done{background:var(--accent);color:#111;border-color:var(--accent)}.taskmain{flex:1;min-width:0}.taskmain b{font-size:13px;display:block}.taskmain small{font-size:11px;color:var(--muted)}.xp{font-size:11px;color:var(--accent)}.btn{background:var(--accent);color:#11170b;padding:10px 14px;border-radius:10px;font-weight:750;font-size:12px}.btn.secondary{background:#252e3a;color:#eef1f6;border:1px solid #354050}.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}.small{padding:7px 10px}.sectionhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.tag{font-size:10px;color:var(--accent);background:#293721;padding:5px 8px;border-radius:99px}.bar{height:8px;background:#2a3340;border-radius:20px;overflow:hidden;margin:10px 0}.bar span{height:100%;display:block;background:var(--accent)}.tools{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.tool{background:#1a212d;border:1px solid #2a3442;border-radius:14px;padding:15px;text-align:left;min-height:105px}.tool p{font-size:11px;color:var(--muted);margin:4px 0}.tool strong{font-size:13px}.field{width:100%;background:#0e131c;color:white;border:1px solid #303a49;border-radius:10px;padding:11px;outline:none}.field:focus{border-color:#91bc54}.label{font-size:11px;color:var(--muted);display:block;margin:10px 0 5px}.formrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.list{display:grid;gap:9px}.item{background:#1a212d;border-radius:12px;padding:13px;display:flex;justify-content:space-between;gap:10px}.timer{font-size:54px;font-weight:850;text-align:center;letter-spacing:-2px;margin:20px}.center{text-align:center}.coach{background:#202936;border:1px solid #303c4d;border-radius:14px;padding:15px;white-space:pre-wrap;font-size:13px}.bottom{display:none}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#e6f9c9;color:#18200e;padding:10px 15px;border-radius:11px;font-weight:700;font-size:12px;opacity:0;transition:.2s}.toast.show{opacity:1}
 @media(max-width:700px){.app{padding:15px 13px 95px}.tabs{display:none}.grid{grid-template-columns:1fr}.head{align-items:flex-start}.ring{width:85px;height:85px}.stat{padding:9px}.stat b{font-size:17px}.bottom{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:5;background:#0e131cf2;backdrop-filter:blur(15px);border-top:1px solid var(--line);justify-content:space-around;padding:9px 4px calc(9px + env(safe-area-inset-bottom))}.bottom button{background:none;color:var(--muted);font-size:10px;display:grid;gap:3px;justify-items:center}.bottom button.active{color:var(--accent)}.bottom i{font-style:normal;font-size:18px}.formrow{grid-template-columns:1fr}}
-#featureSide{position:fixed!important;right:0!important;top:42%!important;z-index:99999!important;width:48px!important;overflow:visible!important}
-#featureToggle{list-style:none!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:center!important;width:48px!important;height:148px!important;padding:0!important;background:#b7ef65!important;color:#10150b!important;border:2px solid #10150b!important;border-right:0!important;border-radius:13px 0 0 13px!important;font-size:15px!important;font-weight:900!important;box-shadow:0 4px 18px #000!important;cursor:pointer!important}
-#featureToggle::-webkit-details-marker{display:none!important}
-#featureToggle span{display:block!important;width:112px!important;text-align:center!important;font-size:13px!important;line-height:1!important;transform:rotate(-90deg)!important}
-#featurePanel{position:absolute!important;right:55px!important;top:0!important;width:205px!important;padding:12px!important;background:#151b26!important;border:1px solid #465267!important;border-radius:15px!important;box-shadow:0 12px 36px #000!important;z-index:100000!important}
-#featureSide:not([open]) #featurePanel{display:none!important}
-.featureTitle{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#aab4c5;padding:4px 8px 9px;font-weight:800}
-.featureChoice{width:100%;display:flex;justify-content:space-between;align-items:center;background:transparent;color:#f3f5fa;padding:12px 9px;border-radius:9px;text-align:left;font-size:14px}
-.featureChoice.selected{background:#252e3a;color:#b7ef65}
-.featureChoice span{font-size:18px;color:#aab4c5}
-@media(max-width:650px){#featureSide{top:40%!important;right:0!important;width:46px!important}#featureToggle{width:46px!important;height:140px!important}#featurePanel{top:0!important;right:52px!important}}</style></head><body><div class="app"><header class="top"><div class="brand"><div class="logo">M</div>MOMENTUM</div><div style="display:flex;gap:8px;align-items:center"><span class="pill" id="saveState">✓ Saved on device</span><span class="pill" id="streak">🔥 0 day streak</span></div></header><nav class="tabs" id="tabs"></nav><main id="main"></main></div><nav class="bottom" id="bottom"></nav><div class="toast" id="toast"></div><details id="featureSide"><summary id="featureToggle"><span>Features</span></summary><div id="featurePanel"><div class="featureTitle">More features</div><a class="featureChoice" href="#/habits">Habits <span>›</span></a><a class="featureChoice" href="#/goals">Goals <span>›</span></a><a class="featureChoice" href="#/weekly">Weekly Review <span>›</span></a><a class="featureChoice" href="#/journal">Journal <span>›</span></a></div></details>
+</style></head><body><div class="app"><header class="top"><div class="brand"><div class="logo">M</div>MOMENTUM</div><div style="display:flex;gap:8px;align-items:center"><span class="pill" id="saveState">✓ Saved on device</span><span class="pill" id="streak">🔥 0 day streak</span></div></header><nav class="tabs" id="tabs"></nav><main id="main"></main></div><nav class="bottom" id="bottom"></nav><div class="toast" id="toast"></div>
 <script>
 const KEY='momentum_pages_v1',defaults={todos:[],xp:0,level:1,streak:0,tasks:[{id:1,title:'Plan your day',detail:'Set your priorities',xp:20,done:false},{id:2,title:'Move your body',detail:'Choose movement you enjoy',xp:30,done:false},{id:3,title:'Practice a skill',detail:'Spend 15 minutes learning',xp:25,done:false},{id:4,title:'Evening reflection',detail:'Write down one win',xp:20,done:false}],workouts:[],focusSessions:0,focusMinutes:25,coachNotes:[]};
 let data;try{data={...defaults,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{data={...defaults}}let page='plan',timer=null,seconds=data.focusMinutes*60;
@@ -39,34 +29,24 @@ function focus(){return head('Focus mode','Give one thing your full attention.')
 function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
 function builder(){
  const saved=data.generatedPlan||null;
- return head('Routine builder','A separate planner for workouts and everyday routines.')+
- '<section class="card"><div class="sectionhead"><h2>What should I build?</h2><span class="tag">MOMENTUM BUILDER</span></div>'+
- '<label class="label">Plan type</label><select class="field" id="buildType"><option value="workout">Workout routine</option><option value="daily">Daily routine</option></select>'+
- '<div id="workoutOptions"><div class="formrow"><div><label class="label">Experience</label><select class="field" id="buildLevel"><option value="beginner">Beginner</option><option value="some">Some experience</option></select></div><div><label class="label">Days per week</label><select class="field" id="buildDays"><option value="2">2 days</option><option value="3">3 days</option></select></div></div>'+
- '<label class="label">Equipment</label><select class="field" id="buildEquipment"><option value="bodyweight">No equipment</option><option value="light">Light home equipment</option></select></div>'+
- '<div id="dailyOptions" style="display:none"><label class="label">Main focus</label><select class="field" id="dailyFocus"><option value="balanced">Balanced day</option><option value="school">School and homework</option><option value="energy">Energy and healthy habits</option></select></div>'+
- '<br><button class="btn" id="makePlan" style="width:100%">✦ Generate my plan</button>'+
- '<p class="muted" style="font-size:10px;margin-top:12px">Offline AI-style planner · Creates a plan on this device; it is not a live AI model.</p></section>'+
+ return head('Workout builder','Build a simple movement routine.')+
+ '<section class="card"><div class="sectionhead"><h2>Build a workout plan</h2><span class="tag">MOMENTUM BUILDER</span></div>'+
+ '<div class="formrow"><div><label class="label">Experience</label><select class="field" id="buildLevel"><option value="beginner">Beginner</option><option value="some">Some experience</option></select></div><div><label class="label">Days per week</label><select class="field" id="buildDays"><option value="2">2 days</option><option value="3">3 days</option></select></div></div>'+
+ '<label class="label">Equipment</label><select class="field" id="buildEquipment"><option value="bodyweight">No equipment</option><option value="light">Light home equipment</option></select>'+
+ '<br><button class="btn" id="makePlan" style="width:100%">✦ Generate workout plan</button>'+
+ '<p class="muted" style="font-size:10px;margin-top:12px">Offline planner · Creates a plan on this device; it is not a live AI model.</p></section>'+
  '<section class="card" id="generatedArea" style="margin-top:15px">'+(saved?'<h2>Your saved plan</h2><div class="coach">'+safe(saved.text).replace(/\n/g,'<br>')+'</div>':'<h2>Your plan will appear here</h2><p class="muted">Choose your preferences and generate a plan.</p>')+'</section>';
 }
 function buildPlan(){
- const type=document.getElementById('buildType').value;
- let text='';
- if(type==='workout'){
-  const days=+document.getElementById('buildDays').value;
-  const level=document.getElementById('buildLevel').value;
-  const gear=document.getElementById('buildEquipment').value;
-  const sets=level==='beginner'?'1–2 comfortable sets':'2 comfortable sets';
-  const push=gear==='light'?'Incline or light resistance-band rows, using equipment only if an adult has checked it is safe.':'Wall push-ups or incline push-ups against a sturdy surface.';
-  const session='Warm up with 5 minutes of easy movement.\n• '+sets+' of chair/bodyweight squats.\n• '+sets+' of '+push+'\n• '+sets+' of bird-dogs, alternating sides.\n• Finish with easy walking and gentle movement.';
-  text='YOUR WEEKLY MOVEMENT PLAN\n\nDay 1 — Full-body basics\n'+session+'\n\n'+(days===3?'Day 2 — Enjoyable movement\nChoose a fun activity such as walking, cycling, dancing, or a sport at a comfortable pace.\n\n':'Day 2 — Rest or gentle movement\nTake a rest day or choose an easy walk or activity you enjoy.\n\n')+(days===3?'Day 3 — Full-body basics\nRepeat Day 1, focusing on comfortable technique rather than doing more.\n\n':'Day 3 — Rest\nGive your body time to recover.\n\n')+'Other days: rest or choose gentle movement you enjoy. Keep sessions comfortable, stop if something hurts, and ask a trusted adult or qualified coach to help check your form. Eat regular meals, drink water, and get enough sleep. This plan is for general wellbeing and strength—not changing your appearance. If you have an injury, health concern, or questions about growth, check with a parent/guardian and healthcare professional first.';
- }else{
-  const focus=document.getElementById('dailyFocus').value;
-  const middle=focus==='school'?'After school: take a short break, then do one 20-minute homework block. Take a screen-free break before the next task.':focus==='energy'?'During the day: eat regular meals and snacks when hungry, drink water, and take comfortable movement breaks.':'After school: take a reset break, work on one priority, and make time for a hobby or movement you enjoy.';
-  text='YOUR DAILY ROUTINE\n\nMorning: get up, get ready, have breakfast, and check your top priority.\n\nDaytime: attend your activities and take breaks when you can.\n\n'+middle+'\n\nEvening: have dinner, prepare what you need for tomorrow, relax, and keep a steady bedtime routine.\n\nKeep it flexible. A routine should support your day, not make you feel bad when plans change.';
- }
- data.generatedPlan={type,text,date:new Date().toLocaleDateString()};
- if(type==='workout')data.workoutPlan={text,date:data.generatedPlan.date};
+ const days=+document.getElementById('buildDays').value;
+ const level=document.getElementById('buildLevel').value;
+ const gear=document.getElementById('buildEquipment').value;
+ const sets=level==='beginner'?'1–2 comfortable sets':'2 comfortable sets';
+ const push=gear==='light'?'Incline or light resistance-band rows, using equipment only if an adult has checked it is safe.':'Wall push-ups or incline push-ups against a sturdy surface.';
+ const session='Warm up with 5 minutes of easy movement.\n• '+sets+' of chair/bodyweight squats.\n• '+sets+' of '+push+'\n• '+sets+' of bird-dogs, alternating sides.\n• Finish with easy walking and gentle movement.';
+ const text='YOUR WEEKLY MOVEMENT PLAN\n\nDay 1 — Full-body basics\n'+session+'\n\n'+(days===3?'Day 2 — Enjoyable movement\nChoose a fun activity such as walking, cycling, dancing, or a sport at a comfortable pace.\n\n':'Day 2 — Rest or gentle movement\nTake a rest day or choose an easy walk or activity you enjoy.\n\n')+(days===3?'Day 3 — Full-body basics\nRepeat Day 1, focusing on comfortable technique rather than doing more.\n\n':'Day 3 — Rest\nGive your body time to recover.\n\n')+'Other days: rest or choose gentle movement you enjoy. Keep sessions comfortable, stop if something hurts, and ask a trusted adult or qualified coach to help check your form. Eat regular meals, drink water, and get enough sleep. This plan is for general wellbeing and strength—not changing your appearance. If you have an injury, health concern, or questions about growth, check with a parent/guardian and healthcare professional first.';
+ data.generatedPlan={type:'workout',text,date:new Date().toLocaleDateString()};
+ data.workoutPlan={text,date:data.generatedPlan.date};
  save();
  const area=document.getElementById('generatedArea');
  if(area)area.innerHTML='<h2>Your generated plan</h2><div class="coach">'+safe(text).replace(/\n/g,'<br>')+'</div><button class="btn secondary" id="copyPlan" style="margin-top:12px">Copy plan</button>';
@@ -113,64 +93,4 @@ function checkTodoReminders(){
 }
 window.addEventListener('pagehide',save);setInterval(checkTodoReminders,30000);window.addEventListener('focus',checkTodoReminders);document.addEventListener('visibilitychange',()=>{if(document.hidden)save()});save();render();
 </script>
-<script>
-(function(){
-var extra=[['habits','Habits'],['goals','Goals'],['weekly','Week'],['journal','Journal']];
-var oldRender=render;
-function today(){return new Date().toLocaleDateString('en-CA')}
-function extraHTML(){
- if(page==='habits'){
-  var hs=data.habits||[];
-  return head('Habit tracker','Build consistency through small actions.')+'<section class="card"><h2>Add a habit</h2><input class="field" id="hname" placeholder="e.g. Read for 10 minutes"><br><br><button class="btn" id="hadd">＋ Add habit</button></section><section class="card" style="margin-top:15px"><h2>Today</h2>'+(hs.length?hs.map(function(h){var done=(h.doneDates||[]).indexOf(today())>=0;var streak=0,d=new Date();while((h.doneDates||[]).indexOf(d.toLocaleDateString('en-CA'))>=0){streak++;d.setDate(d.getDate()-1)}return '<div class="task"><button class="check '+(done?'done':'')+'" data-hdone="'+h.id+'">'+(done?'✓':'')+'</button><div class="taskmain"><b>'+safe(h.name)+'</b><small>🔥 '+streak+' day streak</small></div><button class="btn ghost small" data-hdel="'+h.id+'">×</button></div>'}).join(''):'<p class="muted">Add your first habit above.</p>')+'</section>';
- }
- if(page==='goals'){
-  var gs=data.goals||[];
-  return head('Goals','Break big goals into smaller milestones.')+'<section class="card"><h2>Create a goal</h2><input class="field" id="gname" placeholder="e.g. Learn a new skill"><br><br><button class="btn" id="gadd">＋ Create goal</button></section><section class="card" style="margin-top:15px"><h2>Your goals</h2>'+(gs.length?gs.map(function(g){var n=g.steps.filter(function(x){return x.done}).length;return '<div class="item" style="display:block;margin:10px 0"><div class="sectionhead"><b>'+safe(g.name)+'</b><button class="btn ghost small" data-gdel="'+g.id+'">Delete</button></div><div class="bar"><span style="width:'+(g.steps.length?n/g.steps.length*100:0)+'%"></span></div><small class="muted">'+n+'/'+g.steps.length+' milestones</small><div style="display:flex;gap:7px;margin-top:10px"><input class="field" id="m'+g.id+'" placeholder="New milestone"><button class="btn small" data-madd="'+g.id+'">Add</button></div>'+g.steps.map(function(x){return '<div class="task"><button class="check '+(x.done?'done':'')+'" data-mtoggle="'+g.id+':'+x.id+'">'+(x.done?'✓':'')+'</button><div class="taskmain"><b>'+safe(x.name)+'</b></div></div>'}).join('')+'</div>'}).join(''):'<p class="muted">Your goals will appear here.</p>')+'</section>';
- }
- if(page==='weekly'){
-  var since=new Date();since.setDate(since.getDate()-6);var key=since.toLocaleDateString('en-CA');
-  var tasks=(data.taskEvents||[]).filter(function(x){return x.date>=key&&x.date<=today()}).length;
-  var workouts=(data.workouts||[]).filter(function(x){return x.iso&&new Date(x.iso)>=since}).length;
-  var focuses=(data.focusEvents||[]).filter(function(x){return x.date>=key&&x.date<=today()});
-  var mins=focuses.reduce(function(a,x){return a+(x.minutes||0)},0);
-  return head('Weekly review','Look back, notice progress, and choose one small next step.')+'<div class="grid"><section class="card"><h2>Last 7 days</h2><div class="stats"><div class="stat"><b>'+tasks+'</b><small>Tasks done</small></div><div class="stat"><b>'+workouts+'</b><small>Workouts</small></div><div class="stat"><b>'+mins+'</b><small>Focus minutes</small></div></div></section><section class="card"><h2>Keep going</h2><p class="muted">Progress is not all-or-nothing. A quieter week can still be useful.</p><p>'+((data.habits||[]).length)+' habits · '+((data.goals||[]).length)+' goals · '+((data.journal||[]).length)+' journal entries</p></section></div><section class="card" style="margin-top:15px"><h2>Weekly reflection</h2><p class="muted">What went well? What was challenging? What is one thing to try next week?</p><button class="btn" id="weekjournal">Write reflection</button></section>';
- }
- if(page==='journal'){
-  var js=data.journal||[];
-  return head('Daily journal','Reflect on your day. Entries stay on this device.')+'<section class="card"><h2>Today's reflection</h2><label class="label">What went well?</label><textarea class="field" id="jwin" rows="2"></textarea><label class="label">What was challenging?</label><textarea class="field" id="jchallenge" rows="2"></textarea><label class="label">One thing for tomorrow</label><textarea class="field" id="jnext" rows="2"></textarea><br><br><button class="btn" id="jsave" style="width:100%">Save reflection</button></section><section class="card" style="margin-top:15px"><h2>Past entries</h2>'+(js.length?js.slice().reverse().map(function(j){return '<div class="item" style="display:block;margin:8px 0"><b>'+safe(j.date)+'</b><p class="muted" style="font-size:12px">Went well: '+safe(j.win)+'<br>Challenge: '+safe(j.challenge)+'<br>Next: '+safe(j.next)+'</p></div>'}).join(''):'<p class="muted">No entries yet.</p>')+'</section>';
- }
- return '';
-}
-function attach(){
- if(page==='habits'){
-  document.getElementById('hadd').onclick=function(){var n=document.getElementById('hname').value.trim();if(!n)return notify('Name your habit first');data.habits=data.habits||[];data.habits.push({id:Date.now(),name:n,doneDates:[]});save();render()};
-  document.querySelectorAll('[data-hdone]').forEach(function(b){b.onclick=function(){var h=data.habits.find(function(x){return x.id==b.dataset.hdone});h.doneDates=h.doneDates||[];var i=h.doneDates.indexOf(today());if(i>=0)h.doneDates.splice(i,1);else{h.doneDates.push(today());xp(5)}save();render()}});
-  document.querySelectorAll('[data-hdel]').forEach(function(b){b.onclick=function(){data.habits=data.habits.filter(function(h){return h.id!=b.dataset.hdel});save();render()}});
- }
- if(page==='goals'){
-  document.getElementById('gadd').onclick=function(){var n=document.getElementById('gname').value.trim();if(!n)return notify('Name your goal first');data.goals=data.goals||[];data.goals.push({id:Date.now(),name:n,steps:[]});save();render()};
-  document.querySelectorAll('[data-gdel]').forEach(function(b){b.onclick=function(){data.goals=data.goals.filter(function(g){return g.id!=b.dataset.gdel});save();render()}});
-  document.querySelectorAll('[data-madd]').forEach(function(b){b.onclick=function(){var g=data.goals.find(function(x){return x.id==b.dataset.madd}),v=document.getElementById('m'+b.dataset.madd).value.trim();if(g&&v){g.steps.push({id:Date.now(),name:v,done:false});save();render()}}});
-  document.querySelectorAll('[data-mtoggle]').forEach(function(b){b.onclick=function(){var a=b.dataset.mtoggle.split(':'),g=data.goals.find(function(x){return x.id==a[0]}),m=g&&g.steps.find(function(x){return x.id==a[1]});if(m){m.done=!m.done;if(m.done)xp(10);save();render()}}});
- }
- if(page==='journal'){
-  document.getElementById('jsave').onclick=function(){data.journal=data.journal||[];data.journal.push({date:new Date().toLocaleDateString(),win:document.getElementById('jwin').value.trim(),challenge:document.getElementById('jchallenge').value.trim(),next:document.getElementById('jnext').value.trim()});save();render();notify('Reflection saved on this device')};
- }
- if(page==='weekly')document.getElementById('weekjournal').onclick=function(){go('journal')};
-}
-var oldRender=render;
-render=function(){
- oldRender();
- if(['habits','goals','weekly','journal'].indexOf(page)>=0){document.getElementById('main').innerHTML=extraHTML();attach()}
- document.querySelectorAll('[data-feature]').forEach(function(b){b.classList.toggle('selected',page===b.dataset.feature)});
-};
-var featureSide=document.getElementById('featureSide');
-function routeFeature(){var p=location.hash.replace(/^#\/?/,'');if(['habits','goals','weekly','journal'].indexOf(p)>=0){page=p;render();featureSide.open=false}}
-window.addEventListener('hashchange',routeFeature);
-document.querySelectorAll('.featureChoice').forEach(function(b){b.addEventListener('click',function(){featureSide.open=false})});
-
-data.habits=data.habits||[];data.goals=data.goals||[];data.journal=data.journal||[];data.taskEvents=data.taskEvents||[];data.focusEvents=data.focusEvents||[];
-var originalAdvice=advice;advice=function(q){var s=String(q).toLowerCase();if(/routine|schedule|daily plan/.test(s))return 'Let’s make a realistic routine. Use Builder to generate a morning, school/daytime, and evening plan, then add the steps you want to your To-do list. Keep it flexible and start with just one or two changes.';if(/habit|streak/.test(s))return 'Open Habits to add a small action you want to repeat. Check it off when you do it; a missed day is not failure—just continue when you are ready.';if(/goal|milestone/.test(s))return 'Open Goals, create a goal, and break it into milestones small enough to work on one at a time.';if(/weekly review|this week|progress/.test(s))return 'Open Week for a snapshot of your recent tasks, workouts, and focus time. Use the reflection prompt to choose one small improvement.';if(/journal|reflect|reflection/.test(s))return 'Open Journal and write one thing that went well, one challenge, and one next step. Keep it honest and brief.';return originalAdvice(q)};
-render();
-})();
-</script></body></html>
+</body></html>
