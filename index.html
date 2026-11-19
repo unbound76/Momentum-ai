@@ -102,4 +102,55 @@ function checkTodoReminders(){
  }
 }
 window.addEventListener('pagehide',save);setInterval(checkTodoReminders,30000);window.addEventListener('focus',checkTodoReminders);document.addEventListener('visibilitychange',()=>{if(document.hidden)save()});save();render();
+</script>
+<script>
+(function(){
+var extra=[['habits','Habits'],['goals','Goals'],['weekly','Week'],['journal','Journal']];
+var oldRender=render;
+function today(){return new Date().toLocaleDateString('en-CA')}
+function extraHTML(){
+ if(page==='habits'){
+  var hs=data.habits||[];
+  return head('Habit tracker','Build consistency through small actions.')+'<section class="card"><h2>Add a habit</h2><input class="field" id="hname" placeholder="e.g. Read for 10 minutes"><br><br><button class="btn" id="hadd">＋ Add habit</button></section><section class="card" style="margin-top:15px"><h2>Today</h2>'+(hs.length?hs.map(function(h){var done=(h.doneDates||[]).indexOf(today())>=0;var streak=0,d=new Date();while((h.doneDates||[]).indexOf(d.toLocaleDateString('en-CA'))>=0){streak++;d.setDate(d.getDate()-1)}return '<div class="task"><button class="check '+(done?'done':'')+'" data-hdone="'+h.id+'">'+(done?'✓':'')+'</button><div class="taskmain"><b>'+safe(h.name)+'</b><small>🔥 '+streak+' day streak</small></div><button class="btn ghost small" data-hdel="'+h.id+'">×</button></div>'}).join(''):'<p class="muted">Add your first habit above.</p>')+'</section>';
+ }
+ if(page==='goals'){
+  var gs=data.goals||[];
+  return head('Goals','Break big goals into smaller milestones.')+'<section class="card"><h2>Create a goal</h2><input class="field" id="gname" placeholder="e.g. Learn a new skill"><br><br><button class="btn" id="gadd">＋ Create goal</button></section><section class="card" style="margin-top:15px"><h2>Your goals</h2>'+(gs.length?gs.map(function(g){var n=g.steps.filter(function(x){return x.done}).length;return '<div class="item" style="display:block;margin:10px 0"><div class="sectionhead"><b>'+safe(g.name)+'</b><button class="btn ghost small" data-gdel="'+g.id+'">Delete</button></div><div class="bar"><span style="width:'+(g.steps.length?n/g.steps.length*100:0)+'%"></span></div><small class="muted">'+n+'/'+g.steps.length+' milestones</small><div style="display:flex;gap:7px;margin-top:10px"><input class="field" id="m'+g.id+'" placeholder="New milestone"><button class="btn small" data-madd="'+g.id+'">Add</button></div>'+g.steps.map(function(x){return '<div class="task"><button class="check '+(x.done?'done':'')+'" data-mtoggle="'+g.id+':'+x.id+'">'+(x.done?'✓':'')+'</button><div class="taskmain"><b>'+safe(x.name)+'</b></div></div>'}).join('')+'</div>'}).join(''):'<p class="muted">Your goals will appear here.</p>')+'</section>';
+ }
+ if(page==='weekly'){
+  var since=new Date();since.setDate(since.getDate()-6);var key=since.toLocaleDateString('en-CA');
+  var tasks=(data.taskEvents||[]).filter(function(x){return x.date>=key&&x.date<=today()}).length;
+  var workouts=(data.workouts||[]).filter(function(x){return x.iso&&new Date(x.iso)>=since}).length;
+  var focuses=(data.focusEvents||[]).filter(function(x){return x.date>=key&&x.date<=today()});
+  var mins=focuses.reduce(function(a,x){return a+(x.minutes||0)},0);
+  return head('Weekly review','Look back, notice progress, and choose one small next step.')+'<div class="grid"><section class="card"><h2>Last 7 days</h2><div class="stats"><div class="stat"><b>'+tasks+'</b><small>Tasks done</small></div><div class="stat"><b>'+workouts+'</b><small>Workouts</small></div><div class="stat"><b>'+mins+'</b><small>Focus minutes</small></div></div></section><section class="card"><h2>Keep going</h2><p class="muted">Progress is not all-or-nothing. A quieter week can still be useful.</p><p>'+((data.habits||[]).length)+' habits · '+((data.goals||[]).length)+' goals · '+((data.journal||[]).length)+' journal entries</p></section></div><section class="card" style="margin-top:15px"><h2>Weekly reflection</h2><p class="muted">What went well? What was challenging? What is one thing to try next week?</p><button class="btn" id="weekjournal">Write reflection</button></section>';
+ }
+ if(page==='journal'){
+  var js=data.journal||[];
+  return head('Daily journal','Reflect on your day. Entries stay on this device.')+'<section class="card"><h2>Today's reflection</h2><label class="label">What went well?</label><textarea class="field" id="jwin" rows="2"></textarea><label class="label">What was challenging?</label><textarea class="field" id="jchallenge" rows="2"></textarea><label class="label">One thing for tomorrow</label><textarea class="field" id="jnext" rows="2"></textarea><br><br><button class="btn" id="jsave" style="width:100%">Save reflection</button></section><section class="card" style="margin-top:15px"><h2>Past entries</h2>'+(js.length?js.slice().reverse().map(function(j){return '<div class="item" style="display:block;margin:8px 0"><b>'+safe(j.date)+'</b><p class="muted" style="font-size:12px">Went well: '+safe(j.win)+'<br>Challenge: '+safe(j.challenge)+'<br>Next: '+safe(j.next)+'</p></div>'}).join(''):'<p class="muted">No entries yet.</p>')+'</section>';
+ }
+ return '';
+}
+function attach(){
+ extra.forEach(function(x){var b=document.createElement('button');b.className='tab '+(page===x[0]?'active':'');b.textContent=x[1];b.onclick=function(){go(x[0])};document.getElementById('tabs').appendChild(b);var m=document.createElement('button');m.className=page===x[0]?'active':'';m.innerHTML='<i>✧</i>'+x[1];m.onclick=function(){go(x[0])};document.getElementById('bottom').appendChild(m)});
+ if(page==='habits'){
+  document.getElementById('hadd').onclick=function(){var n=document.getElementById('hname').value.trim();if(!n)return notify('Name your habit first');data.habits=data.habits||[];data.habits.push({id:Date.now(),name:n,doneDates:[]});save();render()};
+  document.querySelectorAll('[data-hdone]').forEach(function(b){b.onclick=function(){var h=data.habits.find(function(x){return x.id==b.dataset.hdone});h.doneDates=h.doneDates||[];var i=h.doneDates.indexOf(today());if(i>=0)h.doneDates.splice(i,1);else{h.doneDates.push(today());xp(5)}save();render()}});
+  document.querySelectorAll('[data-hdel]').forEach(function(b){b.onclick=function(){data.habits=data.habits.filter(function(h){return h.id!=b.dataset.hdel});save();render()}});
+ }
+ if(page==='goals'){
+  document.getElementById('gadd').onclick=function(){var n=document.getElementById('gname').value.trim();if(!n)return notify('Name your goal first');data.goals=data.goals||[];data.goals.push({id:Date.now(),name:n,steps:[]});save();render()};
+  document.querySelectorAll('[data-gdel]').forEach(function(b){b.onclick=function(){data.goals=data.goals.filter(function(g){return g.id!=b.dataset.gdel});save();render()}});
+  document.querySelectorAll('[data-madd]').forEach(function(b){b.onclick=function(){var g=data.goals.find(function(x){return x.id==b.dataset.madd}),v=document.getElementById('m'+b.dataset.madd).value.trim();if(g&&v){g.steps.push({id:Date.now(),name:v,done:false});save();render()}}});
+  document.querySelectorAll('[data-mtoggle]').forEach(function(b){b.onclick=function(){var a=b.dataset.mtoggle.split(':'),g=data.goals.find(function(x){return x.id==a[0]}),m=g&&g.steps.find(function(x){return x.id==a[1]});if(m){m.done=!m.done;if(m.done)xp(10);save();render()}}});
+ }
+ if(page==='journal'){
+  document.getElementById('jsave').onclick=function(){data.journal=data.journal||[];data.journal.push({date:new Date().toLocaleDateString(),win:document.getElementById('jwin').value.trim(),challenge:document.getElementById('jchallenge').value.trim(),next:document.getElementById('jnext').value.trim()});save();render();notify('Reflection saved on this device')};
+ }
+ if(page==='weekly')document.getElementById('weekjournal').onclick=function(){go('journal')};
+}
+render=function(){oldRender();extra.forEach(function(x){var b=document.createElement('button');b.className='tab '+(page===x[0]?'active':'');b.textContent=x[1];b.onclick=function(){go(x[0])};document.getElementById('tabs').appendChild(b);var m=document.createElement('button');m.className=page===x[0]?'active':'';m.innerHTML='<i>✧</i>'+x[1];m.onclick=function(){go(x[0])};document.getElementById('bottom').appendChild(m)});if(['habits','goals','weekly','journal'].indexOf(page)>=0){document.getElementById('main').innerHTML=extraHTML();attach()}};
+data.habits=data.habits||[];data.goals=data.goals||[];data.journal=data.journal||[];data.taskEvents=data.taskEvents||[];data.focusEvents=data.focusEvents||[];
+var originalAdvice=advice;advice=function(q){var s=String(q).toLowerCase();if(/routine|schedule|daily plan/.test(s))return 'Let’s make a realistic routine. Use Builder to generate a morning, school/daytime, and evening plan, then add the steps you want to your To-do list. Keep it flexible and start with just one or two changes.';if(/habit|streak/.test(s))return 'Open Habits to add a small action you want to repeat. Check it off when you do it; a missed day is not failure—just continue when you are ready.';if(/goal|milestone/.test(s))return 'Open Goals, create a goal, and break it into milestones small enough to work on one at a time.';if(/weekly review|this week|progress/.test(s))return 'Open Week for a snapshot of your recent tasks, workouts, and focus time. Use the reflection prompt to choose one small improvement.';if(/journal|reflect|reflection/.test(s))return 'Open Journal and write one thing that went well, one challenge, and one next step. Keep it honest and brief.';return originalAdvice(q)};
+})();
 </script></body></html>
